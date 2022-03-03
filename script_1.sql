@@ -182,5 +182,3 @@ WHERE pro_id = 4;
 UPDATE product
 SET sup_id = 1, pro_name = 'Powerade x500g', pro_brand = 'Coca-Cola Company', pro_price = 2300
 WHERE pro_id = 6;
-
-SELECT *FROM customer;
