@@ -1,7 +1,7 @@
 USE store;
 
 -- Factura con cada producto y precio de cada uno digitando el numero de documento y el tipo de documento
-SELECT product.pro_price as precio, product.pro_name as product_name, invoice.inv_id as invoice_id, order_invoice_product.oip_id as order_id, invoice.inv_delete_at
+SELECT product.pro_price as price, product.pro_name as product_name, invoice.inv_id as invoice_id, order_invoice_product.oip_id as order_id, invoice.inv_delete_at
 FROM ((order_invoice_product 
 INNER JOIN product ON order_invoice_product.pro_id = product.pro_id)
 INNER JOIN invoice ON order_invoice_product.inv_id = invoice.inv_id)
@@ -14,7 +14,7 @@ AND customer.cus_delete_at IS NULL)
 AND invoice.inv_delete_at IS NULL;
 
 -- Factura con total digitando el numero de documento y el tipo de documento
-SELECT invoice.inv_id as invoice_id, invoice.cus_id, SUM(product.pro_price) as precio_total, invoice.inv_delete_at
+SELECT invoice.inv_id as invoice_id, invoice.cus_id, SUM(product.pro_price) as total_price, invoice.inv_delete_at
 FROM ((order_invoice_product 
 INNER JOIN product ON order_invoice_product.pro_id = product.pro_id)
 INNER JOIN invoice ON order_invoice_product.inv_id = invoice.inv_id)
@@ -38,8 +38,8 @@ WHERE product.pro_name = 'Coca-cola x1.5l'
 AND supplier.sup_delete_at IS NULL;
 
 -- (PLUS) producto con más ventas (Está información viene de la orden y no de la factura)
-SELECT order_invoice_product.pro_id, COUNT(order_invoice_product.pro_id) AS cantidad_vendida
+SELECT order_invoice_product.pro_id, COUNT(order_invoice_product.pro_id) AS quantity_sold
 FROM order_invoice_product
 GROUP BY order_invoice_product.pro_id
-HAVING COUNT(cantidad_vendida)
-ORDER BY cantidad_vendida DESC
+HAVING COUNT(quantity_sold)
+ORDER BY quantity_sold DESC
