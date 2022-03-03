@@ -82,10 +82,10 @@ CREATE TABLE IF NOT EXISTS invoice(
 ) ENGINE = InnoDB;
 
 CREATE TABLE IF NOT EXISTS order_invoice_product(
-	oip_id INT PRIMARY KEY AUTO_INCREMENT,	
+    oip_id INT PRIMARY KEY AUTO_INCREMENT,	
     inv_id INT NOT NULL,
     pro_id INT NOT NULL,
-	INDEX inv_pro_idx_uniq (inv_id ASC, pro_id ASC) VISIBLE,
+    INDEX inv_pro_idx_uniq (inv_id ASC, pro_id ASC) VISIBLE,
     CONSTRAINT fk_order_invoice
      FOREIGN KEY (inv_id)
      REFERENCES store.invoice (inv_id)
@@ -105,14 +105,14 @@ INSERT INTO supplier(sup_name) VALUES
     ('Pepsico');
     
 INSERT INTO product(sup_id, pro_name, pro_brand, pro_price) VALUES
-	(1, 'Coca-cola x300ml', 'Coca-Cola Company', 2500),
-	(1, 'Coca-cola x1.5l', 'Coca-Cola Company', 4300),
-	(2, 'Pepsi x1.5l', 'Pepsi', 3900),
-	(2, 'Colombiana x300ml', 'Postobon', 2300),
-	(3, 'Chocoso x65g', 'Bimbo', 1500),
-	(3, 'Brownie Arequipe x75g', 'Bimbo', 2600),
-	(4, 'Papas natural x130g', 'Margarita', 4500),
-	(4, 'Papas limon x130g', 'Margarita', 4500);
+    (1, 'Coca-cola x300ml', 'Coca-Cola Company', 2500),
+    (1, 'Coca-cola x1.5l', 'Coca-Cola Company', 4300),
+    (2, 'Pepsi x1.5l', 'Pepsi', 3900),
+    (2, 'Colombiana x300ml', 'Postobon', 2300),
+    (3, 'Chocoso x65g', 'Bimbo', 1500),
+    (3, 'Brownie Arequipe x75g', 'Bimbo', 2600),
+    (4, 'Papas natural x130g', 'Margarita', 4500),
+    (4, 'Papas limon x130g', 'Margarita', 4500);
 
 INSERT INTO document_type(dot_name) VALUES
     ('CC'),
@@ -122,11 +122,11 @@ INSERT INTO document_type(dot_name) VALUES
     ('PAP');
     
 INSERT INTO salesman(sal_name) VALUES 
-	('Daniel Agudelo');
+    ('Daniel Agudelo');
 
 INSERT INTO customer(dot_id, cus_document_number) VALUES
     (1, '115271302'),
-	(1, '125463214'),
+    (1, '125463214'),
     (2, '125421421'),
     (1, '125421322'),
     (1, '125421525'),
@@ -144,8 +144,8 @@ INSERT INTO invoice(sal_id, cus_id) VALUES
 
 INSERT INTO order_invoice_product(inv_id, pro_id) VALUES
     (1, 2),(1, 2),(1, 6),(1, 7),(1, 8),
-	(2, 2),(2, 2),(2, 6),(2, 7),(2, 8),
-	(3, 1),(3, 2),(3, 6),(3, 5),(3, 4),
+    (2, 2),(2, 2),(2, 6),(2, 7),(2, 8),
+    (3, 1),(3, 2),(3, 6),(3, 5),(3, 4),
     (4, 2),(4, 5),(4, 3),(4, 1),(4, 7),
     (5, 8),(5, 7),(5, 1),(5, 1),(5, 2),
     (4, 2),(4, 5),(4, 3),(4, 1),(4, 7),
